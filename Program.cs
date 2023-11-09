@@ -1,43 +1,76 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 
-            #region Part 1
-            Console.WriteLine("Day 1 - Part 1:");
-            string[] input = File.ReadAllLines("AdventOfCode_Day1.txt");
-            List<int> totals = new List<int>();
-            int total = 0;
+string temp = File.ReadAllText("AoC2.txt");
+string[] tempArray = temp.Split(' ');
+string[] userChoice = new string[tempArray.Length/2];
+string[] opponentChoice = new string[tempArray.Length/2];
+int i = 0, uc = 0, oc = 0;
+char c = ' ';
+char c2 = ' ';
 
-            foreach (string calorie in input)
+foreach(string a in tempArray)
+{
+    if(i % 2 == 0)
+    {
+        opponentChoice[oc] = a;
+        oc++;
+    }
+    else
+    {
+        userChoice[uc] = a;
+        uc++;
+    }
+    i++;
+}
+oc = 0;
+ for(i = 0; i < userChoice.Length; i++)
+{
+    Console.WriteLine(userChoice[i] + "T" + opponentChoice[i]);
+    Console.WriteLine(Convert.ToChar(Convert.ToInt32(Convert.ToChar(userChoice[i])) - 23));
+}
+
+for (i = 0; i < userChoice.Length; i++)
+{
+    c = Convert.ToChar(userChoice[i]);
+    c2 = Convert.ToChar(opponentChoice[i]);
+
+    switch (c)
+    { 
+        case('X'):
+            oc += 1;
+            switch(c2)
             {
-            
-            Console.WriteLine(calorie+", this is a variable in the input array");
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    if(calorie.Length >= 4)
-                { total += int.Parse(calorie.Trim(' ')); }
-                else
-                { totals.Add(total);
-                  total = 0;
-                }
+                case ('A'):
+                    oc += 2;
+                    break;
+                case ('C'):
+                    oc += 1;
+                    break;
             }
+            break;
+        case('Y'):
+            oc += 3;
+            oc += Convert.ToInt32(c2) - 64;
+            break;
+        case ('Z'):
+            oc += 7;
+            switch (c2)
+            {
+                case ('A'):
+                    oc += 1;
+                    break;
+                case ('B'):
+                    oc += 2;
+                    break;
+            }
+            break;
+    }
+}
+    
+    
 
-            totals.Sort((a, b) => {
-                return b - a;
-            }); // sort list DESC
-            Console.WriteLine(totals[0]);
-            #endregion
 
-            #region Part 2
-            Console.WriteLine("Day 1 - Part 2:");
-            Console.WriteLine(totals[0] + totals[1] + totals[2]);
-            #endregion
+
+
+Console.WriteLine(oc);
