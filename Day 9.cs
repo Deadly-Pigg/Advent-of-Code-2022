@@ -5,11 +5,13 @@ int length = 2; //This is for the rope length (iirc). 2 == part 1, 10 == part 2.
 
 string[] file = File.ReadAllLines("AoC9.txt"); //Reads file
 int Umax = 0, Rmax = 0, Dmax = 0, Lmax = 0;
-int x = 0, y = 0;  //Variables. the max stuff is to measure the 'grid' (since I didn't want to measure the grid myself/set a size), x and y are just the lengths of the 2d array
+int tempNum = 0;
+int x = 0, y = 0;  //Variables. the max stuff is to measure the 'grid' (since I didn't want to measure the grid myself/set a size), x and y are just the lengths of the 2d array.
+//tempNum is just a temporary variable, mainly used for reading and storing the value in the file.
 
 foreach (string line in file) //reading each line of the file
 {
-    int tempNum = Int32.Parse(Regex.Replace(line, @"[^\d]", ""));
+    tempNum = Int32.Parse(Regex.Replace(line, @"[^\d]", ""));
     switch (Regex.Replace(line, @"[\d|\s]", ""))
     {
         case ("U"):
@@ -126,7 +128,7 @@ foreach (string s in grid2) //counts each and every character in grid2, adding i
     if (s != null) { counter++; }
 }
 
-Console.WriteLine(Umax);
+Console.WriteLine(counter);
 
 for (int ix = 0; ix < x; ix++) //displays the path of the rope snake for debugging purposes.
 {
