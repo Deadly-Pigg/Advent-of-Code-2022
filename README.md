@@ -1,3 +1,4 @@
 # Advent of Code 2022
 
-I forgot to upload the last year stuff. It's nothing spectacular; I used to only know basic coding logic.
+I forgot to upload the last year stuff. It's nothing spectacular; I used to only know basic coding logic, and wasn't really planning out my solutions beforehand (basically, no Dynamic Programming), so it explains certain parts of the code that... could have been optimised *massively*, but weren't.
+There also wasn't any comments, so I had to add them myself. Please forgive me if I can't explain bits of the code; I'm only here to upload the solutions.
